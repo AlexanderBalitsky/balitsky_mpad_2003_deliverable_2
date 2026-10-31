@@ -1,11 +1,9 @@
-**Date**<br>
-**Course Code & Course Name**<br>
-**Student's First Name & Last Name**<br>
+**November 5th 2026**<br>
+**MPAD2003A Introductory Data Storytelling**<br>
+**Alexander Balitsky**<br>
 **Presented to Jean-Sébastien Marier**<br>
 
 # Deliverable 2: Exploratory Data Analysis (EDA)
-
-Use one hashtag symbol (`#`) to create a level 1 heading like this one.
 
 ## Foreword
 
@@ -23,13 +21,20 @@ Did you notice how to create a hyperlink? In Markdown, we put the clickable text
 And to create an unordered list, we simply put a star (`*`) before each item.
 
 ## 1. Getting Data
+For this exploratory data analysis, I'll be analyzing 3 City of Ottawa datasets about outdoor water facilities. This includes outdoor pools, wading pools, and splash pads. 
 
-Use two hashtag symbols (`##`) to create a level 2 heading like this one.
+**Orginal Datasets**
+[Outdoor Pools Dataset](https://open.ottawa.ca/datasets/909df725a735445cbed1ac82f0f9001f_10/explore)
+[Outdoor Wading Pools Dataset](https://open.ottawa.ca/datasets/7a66e4301c60460c97f0d7c2830fb855_11/explore?location=45.272344%2C-75.773591%2C1)
+[Splash Pads Dataset](https://open.ottawa.ca/datasets/1bb9d909a84540cf99e2ed2106c7cad5_18/explore?location=45.272344%2C-75.773591%2C1)
 
-To include a screen capture, use the sample code below. Your images should be saved in the same folder as your `.md` file.
+The way I went about importing this data into Google Sheets was to simply download the CSV files of each dataset, press *File>Import>Upload*, then select my first CSV file, followed by *"insert new sheet(s)"*, kept *"detect automatically"* for the separator, and repeated this for each file. 
 
-![](import-screen-capture.png)<br>
-*Figure 1: The "Import file" prompt on Google Sheets.*
+***[Link to my Public Spreadsheet](https://docs.google.com/spreadsheets/d/1G--GYr34FMQL5pQnfjmRqWdeEZHLuaQNkMd06S7RDMU/edit?usp=sharing)***<br>
+![](Screenshot-2026-10-30225910.png)
+*Figure 1: Screen capture of my dataset just after importation*
+
+
 
 **Here are examples of functions and lines of code put in grey boxes:**
 
