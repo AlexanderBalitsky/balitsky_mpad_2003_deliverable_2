@@ -34,26 +34,20 @@ The way I went about importing this data into Google Sheets was to simply downlo
 ![](Screenshot-2026-10-30225910.png)
 *Figure 1: Screen capture of my dataset just after importation*
 
+**Observations**
+All together the files hold 225 rows: 11 outdoor pools, 53 wading pools, and 161 splash pads. Outdoor pools contains 23 columns, wading pools 41, and splash pads 25. The data itself isn't very clean, with almost every text column having a french equivalent (ex. NAME_FR, ADDRESS_FR), and a lot of columns are just empty.
 
+- The "OPEN" column, which is shared by all 3 data sets, is a nominal (binary) variable which in this case is stored bilingually as a "yes/oui", "no/non". All 11 of the outdoor pools are listed as "no/non" which as somewhat surprising as this data was last modified in late august and early september.
+- "PARKADDRESS", which is also shared by all 3 data sets, is also a nominal text variable. When a former municipality is listed it is placed at the end of the address (ex. ...Kanata, ...Gloucester), but 43 of the 161 splash pad addresses leave that part out.
+- The "X" and "Y" columns are continuous variables that are measured in metres in the Web Mercator system, for example, "X -8,424,589, Y 5,657,945" instead of longitude and latitude. 
 
-**Here are examples of functions and lines of code put in grey boxes:**
-
-1. If you name a function, put it between "angled" quotation marks like this: `IMPORTHTML`.
-1. If you want to include the entire line of code, do the same thing, albeit with your entire code: `=IMPORTHTML("https://en.wikipedia.org/wiki/China"; "table", 5)`.
-1. Alternatively, you can put your code in an independent box using the template below:
-
-``` r
-=IMPORTHTML("https://en.wikipedia.org/wiki/China"; "table", 5)
-```
-This also shows how to create an ordered list. Simply put `1.` before each item.
+Based on the raw data I think it goes without saying that the type of facility somebody can access highly depends on where they live, as a lot of wading pools cluster more towards the downtown area while splash pads and outdoor pools city further out and around the city.
 
 ## 2. Understanding Data
 
 ### 2.1. VIMO Analysis
 
-Use three hashtag symbols (`###`) to create a level 3 heading like this one. Please follow this template when it comes to level 1 and level 2 headings. However, you can use level 3 headings as you see fit.
 
-Insert text here.
 
 Support your claims by citing relevant sources. Please follow [APA guidelines for in-text citations](https://apastyle.apa.org/style-grammar-guidelines/citations).
 
@@ -63,11 +57,11 @@ As seen in Bounegru & Gray (2011), a data visualization should be clear...
 
 ### 2.2. Cleaning Data
 
-Insert text here.
+
 
 ### 2.3. Analyzing Data
 
-Insert text here.
+
 
 **This section should include a screen capture of your pivot table, like so:**
 
@@ -80,13 +74,15 @@ Insert text here.
 *Figure 3: This exploratory chart shows...*
 
 ## 3. Delivering Data
+I still need to look at population by neighbourhood in Ottawa and dive deeper into the Neighbourhood Equity Index (NEI) scores to see if there is any correlation to find there.
 
-Insert text here.
+A possible interviewee could include someone from the city of Ottawa parks and recreation that manages or oversees water facility related issues. It could also possibly be a councillor or representative from a ward that could give more insight into these water facilities.
 
 ## 4. References
+City of Ottawa. (2021). Parks and recreation facilities master plan. https://documents.ottawa.ca/sites/default/files/MasterPlan_parks_and_facilities-en.pdf
 
-Include a list of your references here. Please follow [APA](https://apastyle.apa.org/style-grammar-guidelines/references) or [MLA](https://www.mla.org/MLA-Style) guidelines for references. Hanging paragraphs aren't required though.
+City of Ottawa. (2022). Splash pads / Aire de jeux d'eau [Data set]. Open Ottawa. https://open.ottawa.ca/datasets/1bb9d909a84540cf99e2ed2106c7cad5_18/explore
 
-**Here's an example:**
+City of Ottawa. (2022). Outdoor pools / Piscines extérieure [Data set]. Open Ottawa. https://open.ottawa.ca/datasets/909df725a735445cbed1ac82f0f9001f_10/explore
 
-Bounegru, L., & Gray, J. (Eds.). (2021). *The Data Journalism Handbook 2: Towards A Critical Data Practice*. Amsterdam University Press. [https://ocul-crl.primo.exlibrisgroup.com/permalink/01OCUL_CRL/hgdufh/alma991022890087305153](https://ocul-crl.primo.exlibrisgroup.com/permalink/01OCUL_CRL/hgdufh/alma991022890087305153)
+City of Ottawa. (2024). Outdoor wading pools / Pataugeoires extérieure [Data set]. Open Ottawa. https://open.ottawa.ca/datasets/7a66e4301c60460c97f0d7c2830fb855_11/explore
