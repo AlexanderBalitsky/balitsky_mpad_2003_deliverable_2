@@ -5,21 +5,6 @@
 
 # Deliverable 2: Exploratory Data Analysis (EDA)
 
-## Foreword
-
-For this assignment, you must clean and analyze the dataset from Deliverable 1, create exploratory charts/visualizations, and identify a potential story. Your assignment must clearly detail your process. You are expected to write about 1,000-1,200 words, and to include several screen captures showing the different steps you went through. Your assignment must be written with the Markdown format and submitted on GitHub.
-
-I have been assigning different versions of this project to my digital journalism and data storytelling students for a few years now. Its structure was inspired by the main sections/chapters of [*The Data Journalism Handbook*](https://datajournalism.com/read/handbook/one/). This version was further inspired by the [Key Capabilities in Data Science](https://extendedlearning.ubc.ca/programs/key-capabilities-data-science) program offered by the University of British Columbia (UBC).
-
-**Here are some useful resources for this assignment:**
-
-* [GitHub's *Basic writing and formatting syntax* page](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
-* [The template repository for this assignment in case you delete something by mistake](https://github.com/jsmarier/jou4100_jou4500_mpad2003_project2_template)
-
-Did you notice how to create a hyperlink? In Markdown, we put the clickable text between square brackets and the actual URL between parentheses.
-
-And to create an unordered list, we simply put a star (`*`) before each item.
-
 ## 1. Getting Data
 For this exploratory data analysis, I'll be analyzing 3 City of Ottawa datasets about outdoor water facilities. This includes outdoor pools, wading pools, and splash pads. 
 
@@ -47,6 +32,18 @@ Based on the raw data I think it goes without saying that the type of facility s
 
 ### 2.1. VIMO Analysis
 
+For this VIMO analysis, I decided to focus more on the variables previously discussed, the OPEN, PARKNAME/ADDRESS, and X/Y. Mostly because these display whether or not a water facility is open and where it sits geographically, which are the most important things to know for my story.
+
+**Valid**
+The "FACILITYID" variable is unique in all 3 files, and every single "X" and "Y" point falls inside of Ottawa.
+
+**Invalid**
+
+
+**Missing**
+17 splash pads and 6 wading pools have no former municipality in either address field. The Miikana Park splash pad is marked as "FUTURE" in the "OPEN" column. "LINK_DESCRIPTION" and "LINK_DESCRIPTION_FR" are both empty across all datasets, "CREATED_DATE" is partially filled out in the splash pads dataset (missing 107 entries), and completely empty in the others. "CLASS" is also entirely empty in the splash pads dataset.
+
+**Outliers**
 
 
 Support your claims by citing relevant sources. Please follow [APA guidelines for in-text citations](https://apastyle.apa.org/style-grammar-guidelines/citations).
@@ -56,7 +53,15 @@ Support your claims by citing relevant sources. Please follow [APA guidelines fo
 As seen in Bounegru & Gray (2011), a data visualization should be clear...
 
 ### 2.2. Cleaning Data
-
+- The first thing I did was combine all three datasets into one combined dataset while keeping the shared/relevant columns only (TYPE, PARKID, FACILITYID, PARKNAME, ADDRESS, PARKADDRESS, OPEN, ACCESSIBLE, X, Y, NOTES, & MODIFIEDDATE) and deleting the rest.
+- Right after that, I spaced out the columns to improve legibility. 
+- Capitalized "TYPE" from "Type" to match the rest of the columns. 
+- The next thing I did was use the find and replace tool to remove all French translations and just keep the English ones (yes/oui to yes, no/non to no) as this isn't really needed for my analysis. 
+- Seeing as "ADDRESS" and "PARKADDRESS" were basically the same thing, except "PARKADDRESS" tended to be more accurate, I removed the "ADDRESS" column.
+- Similarly, I found the "NAME" column to be rather irrelevant as it would either just list the "TYPE" on its own or in combination with the "PARKNAME" column, so removing it was the most resonable option.
+- Added underscores (_) to indicate spaces between column titles as some had them but some didn't, just to keep the formatting consistant.
+- Bolded column titles to visually seperate them from the data itself.
+- Line 160 of the splash pads dataset had a formatting error that caused it to take up 2 rows, so I fixed that.
 
 
 ### 2.3. Analyzing Data
@@ -77,6 +82,10 @@ As seen in Bounegru & Gray (2011), a data visualization should be clear...
 I still need to look at population by neighbourhood in Ottawa and dive deeper into the Neighbourhood Equity Index (NEI) scores to see if there is any correlation to find there.
 
 A possible interviewee could include someone from the city of Ottawa parks and recreation that manages or oversees water facility related issues. It could also possibly be a councillor or representative from a ward that could give more insight into these water facilities.
+
+After a bit of research, some sources that could possibly help me provide more context to my story would include:
+- The City of Ottawa's parks and recreation facilities master plan (City of Ottawa, 2021). 
+- 
 
 ## 4. References
 City of Ottawa. (2021). Parks and recreation facilities master plan. https://documents.ottawa.ca/sites/default/files/MasterPlan_parks_and_facilities-en.pdf
