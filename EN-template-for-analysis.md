@@ -17,7 +17,7 @@ The way I went about importing this data into Google Sheets was to simply downlo
 
 ***[Link to my Public Spreadsheet](https://docs.google.com/spreadsheets/d/1G--GYr34FMQL5pQnfjmRqWdeEZHLuaQNkMd06S7RDMU/edit?usp=sharing)***<br>
 ![](Screenshot-2026-10-30225910.png)
-*Figure 1: Screen capture of my dataset just after importation*
+*Figure 1: Screen capture of my dataset just after importation.*
 
 **Observations**
 All together the files hold 225 rows: 11 outdoor pools, 53 wading pools, and 161 splash pads. Outdoor pools contains 23 columns, wading pools 41, and splash pads 25. The data itself isn't very clean, with almost every text column having a french equivalent (ex. NAME_FR, ADDRESS_FR), and a lot of columns are just empty.
@@ -38,13 +38,13 @@ For this VIMO analysis, I decided to focus more on the variables previously disc
 The "FACILITYID" variable is unique in all 3 files, and every single "X" and "Y" point falls inside of Ottawa.
 
 **Invalid**
-
+In row 115 of splash pads, there is a typo with "Paul Anka Drive" being spelt as "Paul Anda Drive" under the "ADDRESS" column.
 
 **Missing**
-17 splash pads and 6 wading pools have no former municipality in either address field. The Miikana Park splash pad is marked as "FUTURE" in the "OPEN" column. "LINK_DESCRIPTION" and "LINK_DESCRIPTION_FR" are both empty across all datasets, "CREATED_DATE" is partially filled out in the splash pads dataset (missing 107 entries), and completely empty in the others. "CLASS" is also entirely empty in the splash pads dataset.
+17 splash pads and 6 wading pools have no former municipality in either address field. The Miikana Park splash pad is marked as "FUTURE" in the "OPEN" column. "LINK_DESCRIPTION" and "LINK_DESCRIPTION_FR" are both empty across all datasets, "CREATED_DATE" is partially filled out in the splash pads dataset (missing 107 entries), and completely empty in the others. "CLASS" is also entirely empty in the splash pads dataset. 
 
 **Outliers**
-
+The westernmost point is the Huntley Community splash pad, and the easternmost is the Cumberland Millenium Sports Park splash pad. Both of these are plausible datasets, so there wasn't any need to remove them. West Carleton only appears once but it isn't really an outlier of any significance.
 
 Support your claims by citing relevant sources. Please follow [APA guidelines for in-text citations](https://apastyle.apa.org/style-grammar-guidelines/citations).
 
@@ -53,16 +53,21 @@ Support your claims by citing relevant sources. Please follow [APA guidelines fo
 As seen in Bounegru & Gray (2011), a data visualization should be clear...
 
 ### 2.2. Cleaning Data
-- The first thing I did was combine all three datasets into one combined dataset while keeping the shared/relevant columns only (TYPE, PARKID, FACILITYID, PARKNAME, ADDRESS, PARKADDRESS, OPEN, ACCESSIBLE, X, Y, NOTES, & MODIFIEDDATE) and deleting the rest.
+- The first thing I did was combine all three datasets into one combined dataset while keeping the shared/relevant columns only (TYPE, PARKID, FACILITYID, PARKNAME, ADDRESS, PARKADDRESS, OPEN, ACCESSIBLE, X, Y, & MODIFIEDDATE) and deleting the rest.
 - Right after that, I spaced out the columns to improve legibility. 
+- I reorganized the columns so that the type would come first, instead of the coordinates.
 - Capitalized "TYPE" from "Type" to match the rest of the columns. 
-- The next thing I did was use the find and replace tool to remove all French translations and just keep the English ones (yes/oui to yes, no/non to no) as this isn't really needed for my analysis. 
-- Seeing as "ADDRESS" and "PARKADDRESS" were basically the same thing, except "PARKADDRESS" tended to be more accurate, I removed the "ADDRESS" column.
-- Similarly, I found the "NAME" column to be rather irrelevant as it would either just list the "TYPE" on its own or in combination with the "PARKNAME" column, so removing it was the most resonable option.
+- I also used the "find and replace" tool to remove all French translations and just keep the English ones (yes/oui to yes, no/non to no) as this isn't really needed for my analysis. 
+- Seeing as "ADDRESS" and "PARKADDRESS" were basically the same thing I combined both of them to display the most accurate addresses.
+- Similarly, I found the "NAME" column to be rather irrelevant as it would either just list the "TYPE" on its own or in combination with the "PARKNAME" column, so removing it was the most reasonable option.
 - Added underscores (_) to indicate spaces between column titles as some had them but some didn't, just to keep the formatting consistant.
 - Bolded column titles to visually seperate them from the data itself.
-- Line 160 of the splash pads dataset had a formatting error that caused it to take up 2 rows, so I fixed that.
+- Line 160 of the splash pads dataset had a formatting error that caused it to take up 2 rows, so I fixed that by using "Trim whitespace" which removed whitespace from 2 cells.
+- Horizontally left aligned "X", "Y", "PARK_ID", "FACILITY_ID" columns to match the rest.
+- I used the function `=IFERROR(TRIM(INDEX(SPLIT(E2, ","), 1, 2)), "")` to seperate the municipality from the address in column E and placed it into column K.
 
+![](Screenshot2026-11-05115733.png)
+*Figure 2: Screen capture of my dataset right after cleaning.*
 
 ### 2.3. Analyzing Data
 
@@ -70,16 +75,14 @@ As seen in Bounegru & Gray (2011), a data visualization should be clear...
 
 **This section should include a screen capture of your pivot table, like so:**
 
-![](pivot-table-screen-capture.png)<br>
-*Figure 2: This pivot table shows...*
+![](Screenshot2026-11-05121111.png)<br>
+*Figure 3: This pivot table shows facilities by municipality and type*
 
-**This section should also include a screen capture of your exploratory chart, like so:**
-
-![](chart-screen-capture.png)<br>
-*Figure 3: This exploratory chart shows...*
+![](chart.png)<br>
+*Figure 4: The number of water facilities by municipality.*
 
 ## 3. Delivering Data
-I still need to look at population by neighbourhood in Ottawa and dive deeper into the Neighbourhood Equity Index (NEI) scores to see if there is any correlation to find there.
+I still need to look at population by neighbourhood in Ottawa and dive deeper into the Neighbourhood Equity Index (NEI) scores to see if there is any correlation to find there. I'd also look further into sections 5.4 and 5.6 of the facilities master plan .
 
 A possible interviewee could include someone from the city of Ottawa parks and recreation that manages or oversees water facility related issues. It could also possibly be a councillor or representative from a ward that could give more insight into these water facilities.
 
